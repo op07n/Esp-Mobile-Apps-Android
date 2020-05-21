@@ -25,4 +25,4 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: artifact
-        path: ./build/distributions/EspApp.zip
+        path: ./build/outputs/apk/release/app-release-unsigned.apk
