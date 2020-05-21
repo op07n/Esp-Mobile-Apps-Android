@@ -1,0 +1,28 @@
+name: Java CI with Gradle
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11.0.x
+    - name: Build with Gradle
+      run: |
+          cd EspApp
+          ./gradlew.bat build
+          tree /F
+    - uses: actions/upload-artifact@v1
+      with:
+        name: artifact
+        path: ./build/distributions/EspApp.zip
